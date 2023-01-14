@@ -19,6 +19,7 @@ search.addEventListener("click", function (event) {
 
 			$('#images').attr('src', dogImages);
 			$("#favorite").css("visibility", "visible");
+			$('#images').append('<button class="favorite-button">&#9825')
 
 			var imageUrl;
 
@@ -43,8 +44,8 @@ search.addEventListener("click", function (event) {
 favorites.addEventListener("click", function (event) {
 	event.preventDefault();
 
-
-
+appendFavs();
+function appendFavs(){
 	var savedDogs = JSON.parse(localStorage.getItem('favDogs')) || []
 
 	for (var i = 0; i < savedDogs.length; i++) {
@@ -55,7 +56,7 @@ console.log(i);
 		$('body').append('<img class= id=favorites src='+savedDogs[i]+ '></img>')
 
 	}
-
+}
 	console.log(savedDogs);
 
 });
