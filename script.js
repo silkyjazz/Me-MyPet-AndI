@@ -16,10 +16,10 @@ search.addEventListener("click", function (event) {
 		.then(function (data) {
 			console.log("data", data)
 			console.log(data);
-			var images = data.message;
+			var dogImages = data.message;
 
 			//$('body').append(' <button class=""  id="favorite">Add to favorites</button>');
-			$('#images').attr('src', images);
+			$('#images').attr('src', dogImages);
 			$("#favorite").css("visibility", "visible");
 
 
@@ -28,28 +28,26 @@ search.addEventListener("click", function (event) {
 			$('#favorite').on("click", function (event) {
 
 				event.preventDefault();
-				for (var i = 0; i <= localStorage.length; i++) {
 
-					var imageUrl = images
+				var imageUrl = dogImages
+				var savedDogs = JSON.parse(localStorage.getItem('favDogs')) || []
 
-					var favDogList = "#favorite" + i
+				if (!savedDogs.includes(imageUrl)) {
 
-					console.log(favDogList);
+					savedDogs.push(imageUrl);
+			
+				}
+
+				localStorage.setItem('favDogs', JSON.stringify(savedDogs));
+			
+			
+
+
 					console.log(imageUrl);
 
-					if (!favDogList.includes(imageUrl)) {
 
-						console.log((!favDogList.includes(imageUrl)))
 
-						var x = (localStorage.length);
-						console.log(x);
-						localStorage.setItem('favDog ' + x, JSON.stringify(imageUrl));
-					}
-					else{
-
-					console.log('no bueno');
-				}
-			}})
+			})
 
 		})
 
