@@ -8,15 +8,13 @@
 }
 .level{
     margin-top: 35px;
-
-#favorite {
-   visibility:hidden
 }
-.footer{
-    position: absolute;
+.content{
+    position: relative;
     bottom: 0;
     width: 100%;
-    height: 2rem;
+    height: 5px;
+  
 }
 
 #favorite {
