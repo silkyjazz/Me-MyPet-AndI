@@ -1,27 +1,61 @@
 
-// var apiURL = 'https://api.petfinder.com/v2/animals'
-// var APIkey = '5KcB72XZqeGdiWVCIV7Xz3Q9xVboTNG3E9viUIJanHJwLBath9'
-// var secret = "";
+var search = document.querySelector('#search')
+var breeds = "chow"
+var api = "https://dog.ceo/api/breed/" + breeds + "/images/random";
+var favorites = document.querySelector('#showFavoriteList')
+var clearFavorites = document.querySelector('#clearFavList')
 
 
-// fetch('https://api.petfinder.com/v2/animals')
-// .then(function (response){
-//     console.log("response", response)
-//     return response.json()
-// })
-// .then (function(data){
-//     console.log("data",data)
-// })
+search.addEventListener("click", function (event) {
+	event.preventDefault();
 
-// const options = {
-// 	method: 'GET',
-// 	headers: {
-// 		'X-RapidAPI-Key': '62d7415d28msh34e78526b275038p148501jsn6b562ffd43ea',
-// 		'X-RapidAPI-Host': 'book-finder1.p.rapidapi.com'
-// 	}
-// };
+	fetch(api)
+		.then(function (response) {
+			console.log("response", response)
+			return response.json()
+		})
+		.then(function (data) {
 
-fetch('https://www.googleapis.com/books/v1/volumes/?q=John+Green')
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
+			var dogImages = data.message;
+
+			$('#images').attr('src', dogImages);
+			$("#favorite").css("visibility", "visible");
+
+
+			var imageUrl;
+
+			$('#favorite').on("click", function (event) {
+
+				event.preventDefault();
+
+				var imageUrl = dogImages
+				var savedDogs = JSON.parse(localStorage.getItem('favDogs')) || []
+				$("#showFavoriteList").css("visibility", "visible");
+
+
+				if (!savedDogs.includes(imageUrl)) {
+
+					savedDogs.push(imageUrl);
+				}
+				localStorage.setItem('favDogs', JSON.stringify(savedDogs));
+
+			})
+		})
+
+	})
+
+	favorites.addEventListener("click", function renderFavs(event) {
+		event.preventDefault();
+
+		var savedDogs = JSON.parse(localStorage.getItem('favDogs')) || []
+
+		for (var i = 0; i < savedDogs.length; i++) {
+
+			console.log(i);
+			var a = i + 1
+
+			$('body').append('<img class= id=favorites src=' + savedDogs[i] + '></img>')
+			$("#showFavoriteList").css("visibility", "hidden");
+
+		}
+	})
