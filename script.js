@@ -1,27 +1,57 @@
 
-// var apiURL = 'https://api.petfinder.com/v2/animals'
-// var APIkey = '5KcB72XZqeGdiWVCIV7Xz3Q9xVboTNG3E9viUIJanHJwLBath9'
-// var secret = "";
+var search = document.querySelector('#search')
+var breeds = "australian"
+var api = "https://dog.ceo/api/breed/" + breeds + "/images/random";
 
 
-// fetch('https://api.petfinder.com/v2/animals')
-// .then(function (response){
-//     console.log("response", response)
-//     return response.json()
-// })
-// .then (function(data){
-//     console.log("data",data)
-// })
+search.addEventListener("click", function (event) {
+	event.preventDefault();
 
-// const options = {
-// 	method: 'GET',
-// 	headers: {
-// 		'X-RapidAPI-Key': '62d7415d28msh34e78526b275038p148501jsn6b562ffd43ea',
-// 		'X-RapidAPI-Host': 'book-finder1.p.rapidapi.com'
-// 	}
-// };
 
-fetch('https://www.googleapis.com/books/v1/volumes/?q=John+Green')
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));
+	fetch(api)
+		.then(function (response) {
+			console.log("response", response)
+			return response.json()
+		})
+		.then(function (data) {
+			console.log("data", data)
+			console.log(data);
+			var images = data.message;
+
+			//$('body').append(' <button class=""  id="favorite">Add to favorites</button>');
+			$('#images').attr('src', images);
+			$("#favorite").css("visibility", "visible");
+
+
+			var imageUrl;
+
+			$('#favorite').on("click", function (event) {
+
+				event.preventDefault();
+				for (var i = 0; i <= localStorage.length; i++) {
+
+					var imageUrl = images
+
+					var favDogList = "#favorite" + i
+
+					console.log(favDogList);
+					console.log(imageUrl);
+
+					if (!favDogList.includes(imageUrl)) {
+
+						console.log((!favDogList.includes(imageUrl)))
+
+						var x = (localStorage.length);
+						console.log(x);
+						localStorage.setItem('favDog ' + x, JSON.stringify(imageUrl));
+					}
+					else{
+
+					console.log('no bueno');
+				}
+			}})
+
+		})
+
+})
+
