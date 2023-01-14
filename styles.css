@@ -8,11 +8,19 @@
 }
 .level{
     margin-top: 35px;
+}
+.content{
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+  
+}
 
 #favorite {
    visibility:hidden
 }
 #howFavoriteList {
-      visibility:visible
-   }
+    visibility:visible
+}
 
