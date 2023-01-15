@@ -2,7 +2,7 @@
 var search = document.querySelector('#search')
 var breeds = "chow"
 var api = "https://dog.ceo/api/breed/" + breeds + "/images/random";
-var favorites = document.querySelector('#showFavoriteList')
+var favorites = document.querySelectorAll('#showFavoriteList')
 var clearFavorites = document.querySelector('#clearFavList')
 
 
@@ -19,8 +19,8 @@ search.addEventListener("click", function (event) {
 			var dogImages = data.message;
 
 			$('#images').attr('src', dogImages);
+			$("#favorite").css("background-color", "rgb(226, 220, 220)");
 			$("#favorite").css("visibility", "visible");
-
 
 			var imageUrl;
 
@@ -30,7 +30,8 @@ search.addEventListener("click", function (event) {
 
 				var imageUrl = dogImages
 				var savedDogs = JSON.parse(localStorage.getItem('favDogs')) || []
-				$("#showFavoriteList").css("visibility", "visible");
+				$("#favorite").css("background-color", "red");
+				
 
 
 				if (!savedDogs.includes(imageUrl)) {
@@ -42,20 +43,10 @@ search.addEventListener("click", function (event) {
 			})
 		})
 
+
+
 	})
 
-	favorites.addEventListener("click", function renderFavs(event) {
-		event.preventDefault();
 
-		var savedDogs = JSON.parse(localStorage.getItem('favDogs')) || []
 
-		for (var i = 0; i < savedDogs.length; i++) {
 
-			console.log(i);
-			var a = i + 1
-
-			$('body').append('<img class= id=favorites src=' + savedDogs[i] + '></img>')
-			$("#showFavoriteList").css("visibility", "hidden");
-
-		}
-	})
