@@ -4,7 +4,7 @@ var breeds = "chow"
 var api = "https://dog.ceo/api/breed/" + breeds + "/images/random";
 var favorites = document.querySelector('#showFavoriteList')
 var clearFavorites = document.querySelector('#clearFavList')
-
+var welcome = document.getElementById("welcome")
 
 search.addEventListener("click", function (event) {
 	event.preventDefault();
