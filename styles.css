@@ -17,7 +17,10 @@
     position: sticky;
     top: 100%;
 } */
-
+#displayDogs{
+    background-color: darkgrey;
+    margin-top: 40px;
+}
 #favorite {
    visibility:hidden
 }
