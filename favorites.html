@@ -1,3 +1,6 @@
+<!-- display favorite dogs in a table with the option to unfavorite dogs and remove them from the list -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,13 +25,20 @@
         </nav>
     </header>
     
-    <p>No Favorite Pets to Display</p>
-    <div class="" id="favorites">
+    <div class="columns">
+        <div class="column is-8 is-cent">
+            <div class="" id="favorites"></div class="listOfFav">
+            <button class="" id="clearFavorites">Clear Favorites</button>
         
+            <div class="" id="favorites"></div>
+           <button class="" id="showFavoriteList">Your Favorites</button>
+
+        </div>
     </div>
-    <button class="" id="showFavoriteList">Your Favorites</button>
+
     
-      <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
-      <script src="./script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script src="./script.js"></script>
+
 </body>
 </html>
