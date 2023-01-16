@@ -28,8 +28,7 @@ var search = document.querySelector('#search')
 var breeds = "chow" // this needs to be directed to the dropdown of the html
 var api = "https://dog.ceo/api/breed/" + breeds + "/images/random";
 var favorites = document.querySelectorAll('#showFavoriteList')
-=======
-var breeds = "chow" // do we need this?
+// var breeds = "chow" // do we need this?
 
 var api = "https://dog.ceo/api/breed/" + breeds + "/images/random";
 // var favorites = ;
@@ -102,7 +101,6 @@ search.addEventListener("click", function (event) {
 
 	})
 
-		}
-	})
 }
+
 
