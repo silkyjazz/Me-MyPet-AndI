@@ -16,24 +16,22 @@ search.addEventListener("click", function (event) {
 		})
 		.then(function (data) {
 
-			var dogImages = data.message;
+	var dogImages = data.message;
+
+			var imageUrl = dogImages;
+			console.log(dogImages);
 
 			$('#images').attr('src', dogImages);
 			$("#favorite").css("background-color", "rgb(226, 220, 220)");
 			$("#favorite").css("visibility", "visible");
-
-			var imageUrl;
-
 			$('#favorite').on("click", function (event) {
 
 				event.preventDefault();
 
-				var imageUrl = dogImages
+				console.log(imageUrl);
 				var savedDogs = JSON.parse(localStorage.getItem('favDogs')) || []
 				$("#favorite").css("background-color", "red");
 				
-
-
 				if (!savedDogs.includes(imageUrl)) {
 
 					savedDogs.push(imageUrl);
@@ -43,10 +41,4 @@ search.addEventListener("click", function (event) {
 			})
 		})
 
-
-
 	})
-
-
-
-
