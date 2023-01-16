@@ -27,8 +27,21 @@ const nameGenerator = ()=>{
 		}
 	})
 
+}
+const nameGeneratorButton = $(".nameGenerator-button")[0];
+nameGeneratorButton.addEventListener('click', (e)=>{
+	nameGenerator()
+
+})
+
 search.addEventListener("click", function (event) {
 	event.preventDefault();
+	et breeds = $("#breed-input")[0].value;
+	// when any h1 tag is present then remove it.
+	if($(".breed-heading")[0])
+	$(".breed-heading")[0].remove();
+
+	
 
 	fetch(api)
 		.then(function (response) {
