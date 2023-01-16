@@ -1,6 +1,6 @@
 
 var search = document.querySelector('#search')
-var breeds = "chow"
+var breeds = "chow" // this needs to be directed to the dropdown of the html
 var api = "https://dog.ceo/api/breed/" + breeds + "/images/random";
 var favorites = document.querySelectorAll('#showFavoriteList')
 var clearFavorites = document.querySelector('#clearFavList')
