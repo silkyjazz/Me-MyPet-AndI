@@ -22,6 +22,8 @@
     margin-top: 40px;
 }
 #favorite {
+   visibility:hidden;
+   background-color:rgb(226, 220, 220);
    visibility:hidden
 }
 
