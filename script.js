@@ -29,4 +29,35 @@ search.addEventListener("click", function (event) {
 	if($(".breed-heading")[0])
 	$(".breed-heading")[0].remove();
 
+	// add heading 
+	let html = `<h1 class="breed-heading">${breeds}</h1>`
+	cards.insertAdjacentHTML("afterbegin", html); 
+
+	let url = "https://dog.ceo/api/breed/" + breeds + "/images";
+	fetch(url)
+		.then(function (response) {
+			return response.json()
+		})	
+		.then(function (data) {
+		const breedImgData = data.message;
+		cards_container.innerHTML="";
+		let savedDogs = JSON.parse(localStorage.getItem("favDogs")) || [];
+		for(let i=0;i< breedImgData.length;i++){ // for loop to retrieve dog images from breed search
+			// giving the images attributes
+			const testhtml = cards_container.innerHTML+`
+			<div class="card-image">
+				<img class="is-256x256" id="img-${i}" src="${breedImgData[i]}" alt="${breeds}"> 
+					<button class=" button is-normal favorite button-${i}" id="favorite-img">
+					 	<span class="icon is-medium">&#9825; </span>
+					</button>
+					<nav class="level box">
+						<div class="level-left">
+			 				 <div class="level-item">
+								<p><strong>Breed:</strong>${breeds}</p>
+							 </div>
+						</div> 
+					</nav>
+			</div>`
+			cards_container.innerHTML= testhtml;
+
 })
