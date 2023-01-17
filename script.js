@@ -21,12 +21,84 @@ let listOfAllBreed=[];
 let api = "https://dog.ceo/api/"
 var search = document.querySelector('#search')
 // var api = "https://dog.ceo/api/breed/" + breeds + "/images/random";
+let cards = $(".cards")[0];
+let petsName= $(".pets-name")[0];
+let  cards_container = $(".cards-container")[0];
+const nameGenerator_box = $(".nameGenerator-Box")[0]
+const nameGenerator = ()=>{
+	const baseUrl = `https://api.fungenerators.com`; // using the name generator api
+	const url = `${baseUrl}/name/generate?category=dog&limit=10`; // generating a list of 10 random names
+	petsName.innerHTML=""
+	fetch(url).then((res)=>{ // https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
+		return res.json();
+	}).then((data)=>{
+		console.log(data.contents.names);
+		let {names} = data.contents;
+		for(let i=0;i<names.length;i++){ //for loop to retrieve the random names
+			const html = ` 
+			<div class='list-item'>
+				<li>
+					<b>${i+1}.</b> ${names[i]} 
+				</li>
+		    </div>`
+			petsName.insertAdjacentHTML('beforeend', html); 
+		}
+	})
+
+// create the name generator button with click event
+const nameGeneratorButton = $(".nameGenerator-button")[0];
+nameGeneratorButton.addEventListener('click', (e)=>{
+	nameGenerator()
+})
+	
 
 search.addEventListener("click", function (event) {
 	event.preventDefault();
-    let breeds = $("#breed-input")[0].value;
+    var breeds = $("#breed-input")[0].value;
 	// when any h1 tag is present then remove it.
 	if($(".breed-heading")[0])
 	$(".breed-heading")[0].remove();
 
-})
+	// add heading 
+	var html = `<h1 class="breed-heading">${breeds}</h1>`
+	cards.insertAdjacentHTML("afterbegin", html);
+
+
+    var url = "https://dog.ceo/api/breed/" + breeds + "/images";
+	fetch(url)
+		.then(function (response) {
+			return response.json()
+		})	
+		.then(function (data) {
+
+		var breedImgData = data.message;
+		cards_container.innerHTML="";
+		let savedDogs = JSON.parse(localStorage.getItem("favDogs")) || [];
+
+
+		for(let i=0;i< breedImgData.length;i++){
+			const testhtml = cards_container.innerHTML+`
+			<div class="card-image">
+				<img class="is-256x256" id="img-${i}" src="${breedImgData[i]}" alt="${breeds}">
+					<button class=" button is-normal favorite button-${i}" id="favorite-img">
+					 	<span class="icon is-medium">&#9825; </span>
+					</button>
+					<nav class="level box">
+						<div class="level-left">
+			 				 <div class="level-item">
+								<p><strong>Breed:</strong>${breeds}</p>
+							 </div>
+						</div> 
+					</nav>
+			</div>`
+			cards_container.innerHTML= testhtml;
+
+			if(savedDogs.findIndex(obj=>obj.imageUrl===breedImgData[i])>=0){
+	            $(`.button-${i}`)[0].classList.add("liked")
+			}
+		}
+
+		})
+
+	})
+}
