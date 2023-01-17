@@ -60,4 +60,8 @@ search.addEventListener("click", function (event) {
 			</div>`
 			cards_container.innerHTML= testhtml;
 
-})
+			if(savedDogs.findIndex(obj=>obj.imageUrl===breedImgData[i])>=0){
+	            $(`.button-${i}`)[0].classList.add("liked")
+			}
+		}
+	}
