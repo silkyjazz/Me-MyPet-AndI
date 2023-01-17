@@ -25,7 +25,9 @@ If items exist, we want the dogs displayed in a table
 let listOfAllBreed = [];
 var search = document.querySelector('#search')
 
-var favorites = document.querySelectorAll('#showFavoriteList')
+var addFavorites = document.querySelector('#favoriteButton-1')
+
+var photoSelected = document.querySelectorAll('#showFavoriteList')
 // var breeds = "chow" // do we need this?
 
 //var api = "https://dog.ceo/api/breed/" + breeds + "/images/random";
@@ -42,66 +44,53 @@ const nameGenerator_box = $(".nameGenerator-Box")[0]
 
 search.addEventListener("click", function (event) {
 	event.preventDefault();
-	$('h2').text ("");
-	$('h3').text ("");
-	renderRandomNames();
- 	renderDogSearch();
+	$('images').text("");
+	$('h3').text("");
 
+	renderDogSearch();
+	renderRandomNames();
 })
+
 
 
 function renderDogSearch() {
 
 
-		var breeds = document.querySelector("#searchDog").value;
-		var api = "https://dog.ceo/api/breed/" + breeds + "/images/random";
-		console.log(api);
+	var breeds = document.querySelector("#searchDog").value;
+	var api = "https://dog.ceo/api/breed/" + breeds + "/images";
+	console.log(api);
 
-	for (var i = 0; i < 5; i++) {
+	fetch(api)
+		.then(function (response) {
+			console.log("response", response)
+			return response.json()
+		})
 
+		.then(function (data) {
 
-		fetch(api)
-			.then(function (response) {
-				console.log("response", response)
-				return response.json()
-			})
-
-			.then(function (data) {
+			for (var i = 0; i <= 4; i++) {
 
 				var dogImages = data.message;
+				const a = Math.floor(Math.random() * dogImages.length) + 1;
 
-				console.log(dogImages);
+				console.log(a);
 
-				var imageUrl = dogImages;
-				console.log(imageUrl);
+				var imageUrl = dogImages[a];
 
-
-				$('h2').append('<img class= data-index=' + i + 'id=searches src=' + imageUrl + '></img>');
-			
-				$('h2').append('<button class= data-index=' + i + 'id=FavoriteButton>&#9825 </button>');
-				
-				
+				$('images').append('<img class="" id= image' + i + ' src=' + imageUrl + '></img>');
+				$('#contains-photo').append('<button date-index=' + i + '>&#9825</button>');
 				$("#favorite").css("background-color", "rgb(226, 220, 220)");
-				
-				$("#favorite").css("visibility", "visible");
-
-
+				//$("#favorite").css("visibility", "visible");
 			}
-
-			)
-	}
-
+		}
+		)
 
 }
 
-
-
 function renderRandomNames() {
-
 
 	var nameApi = 'https://api.fungenerators.com/name/generate?category=dog&limit=10';
 	console.log(nameApi);
-
 
 	fetch(nameApi)
 		.then(function (response) {
@@ -111,29 +100,42 @@ function renderRandomNames() {
 
 		.then(function (data) {
 
-			for (var i =0; i<=4; i++){
+			for (var i = 0; i <= 4; i++) {
 
-			var names = data.contents.names[i];
+				var names = data.contents.names[i];
 
-			console.log(names);
-
-
-
-			$('h3').append('<p class= data-index=' + i + 'id=names src= >'+ names );
-		
-			//$('h2').append('<button class= data-index=' + i + 'id=favorite>&#9825 </button>');
-			
-			
-			//$("#favorite").css("background-color", "rgb(226, 220, 220)");
-			
-			//$("#favorite").css("visibility", "visible");
+				$('#contains-photo').append('<p data-index=' + i + ' id=names src= >' + names);
 
 			}
 		})
 
+}
+
+
+$('#contains-photo').on("click", function (event) {
+	event.preventDefault();
+
+	console.log("hello")
+
+	var element = event.target;
+	var imageUrl = element.src;
+
+	console.log(element.id);
+	console.log(imageUrl);
+	console.log("I was clicked");
+
+	var savedDogs = JSON.parse(localStorage.getItem('favDogs')) || []
+	$('#' + element.id).attr("class", 'submitted');
+
+	if (!savedDogs.includes(imageUrl)) {
+
+		savedDogs.push(imageUrl);
+	}else{
+
+		$('#' + element.id).attr("class", '');
+		
 	}
 
+	localStorage.setItem('favDogs', JSON.stringify(savedDogs));
 
-
-
-
+})
