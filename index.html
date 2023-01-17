@@ -1,36 +1,136 @@
+<!-- TO DO:
+
+1. DISPLAY THE DOGS IMAGES IN ROWS AND 4 COLUMN CARDS
+2. SET UP THE FAVORITES PAGE
+3. FILL IN DROP DOWN MENU
+4. IMPORT ICONS NEEDED TO FAVORITE DOG 
+
+-->
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <!--Using Bulma as our CSS framework. Imported the CSS file directly from jsDelivr -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
+
     <title>Me, My Pet, & I</title>
-</head>
-<body>
-    <header>
-        <h1>ME, MY PET, AND I</h1>
-       <a href="Favorites.html">Favorites</a>
-    </header>
-    <form>
-        <img src="logo.png" alt="me/my pet/i">
-        <form id="checkbox">
-            <select name="make">
-                <option id="breed"></option>  
-            </select>
-            
-            <input type="submit" />
-            </form>
-            <div class="gallery">
-                <div class="row" id="petGallery">
-                </div>
-              </div>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <!-- <header class="header">
+    <nav class="level">
+        <p class="level-item has-text-centered">
+            <a href="index.html" class="link is-info">Home</a>
+          </p>
+          <p class="level-item has-text-centered">
+            <img src="/assets/and I.png" alt="" style="height: 140px;">
+          </p>
+          <p class="level-item has-text-centered">
+            <a href="favorites.html" class="link is-info">Favorite Pets</a>
+          </p>
+    </nav>
+</header> -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light"
+      style="background-color: #e3f2fd"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Me, My Pet, & I</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./favorites.html">Favorites</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="hero is-small-with-navbar">
+      <div class="hero-body level">
+        <div class="level-item">
+          <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuGogBreeds" data-bs-toggle="dropdown" aria-expanded="false">
+              Dog Breeds
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuGogBreeds">
+              <li><a class="dropdown-item" href="#" onclick="selectBreed('Retriever')">Retriever</a></li>
+              <li><a class="dropdown-item" href="#" onclick="selectBreed('Borzoi')">Borzoi</a></li>
+              <li><a class="dropdown-item" href="#" onclick="selectBreed('Poodle')">Poodle</a></li>
+              <li><a class="dropdown-item" href="#" onclick="selectBreed('Boxer')">Boxer</a></li>
+              <li><a class="dropdown-item" href="#" onclick="selectBreed('Spaniel')">Spaniel</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cards hero">
+      <div class="container hero-body breed-list">
+        <div class="cards-container columns is-multiline" id="cards-container"></div>
+      </div>
+    </section>
+
+    <!-- <section class="section" id="nameGenerator"> -->
+
+    <!-- Random Name generator-->
+    <section class="section" id="nameGenerator">
+      <div class="container nameGenerator-Box">
+        <div class="nameGenerator-container">
+          <button class="button is-primary is-large nameGenerator-button">
+            Name Generator
+          </button>
+        </div>
+        <div>
+          <h1 class="title has-text-centered">Pet's Name</h1>
+        </div>
+        <div class="columns is-mobile is-centered">
+          <div class="column is-5">
+            <div class="list">
+              <ul class="pets-name"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <script src="./script.js"></script>
-</body>
-<footer>
-    Was created with love by Jasmine Ulloa, Darren Watanabe, Emmanuel Ronquillo, Roksolana Odynak
-    
-    
-</footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
