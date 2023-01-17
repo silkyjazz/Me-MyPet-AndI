@@ -42,8 +42,10 @@ const nameGenerator_box = $(".nameGenerator-Box")[0]
 
 search.addEventListener("click", function (event) {
 	event.preventDefault();
-
-	renderDogSearch();
+	$('h2').text ("");
+	$('h3').text ("");
+	renderRandomNames();
+ 	renderDogSearch();
 
 })
 
@@ -67,19 +69,23 @@ function renderDogSearch() {
 			.then(function (data) {
 
 				var dogImages = data.message;
-console.log(dogImages);
+
+				console.log(dogImages);
+
 				var imageUrl = dogImages;
 				console.log(imageUrl);
 
 
-				$('h2').append('<img class= data-index=' + i + 'id=favorites src=' + imageUrl + '></img>');
+				$('h2').append('<img class= data-index=' + i + 'id=searches src=' + imageUrl + '></img>');
 			
-				$('h2').append('<button class= data-index=' + i + 'id=favorite>&#9825 </button>');
+				$('h2').append('<button class= data-index=' + i + 'id=FavoriteButton>&#9825 </button>');
 				
 				
 				$("#favorite").css("background-color", "rgb(226, 220, 220)");
 				
 				$("#favorite").css("visibility", "visible");
+
+
 			}
 
 			)
@@ -87,4 +93,47 @@ console.log(dogImages);
 
 
 }
+
+
+
+function renderRandomNames() {
+
+
+	var nameApi = 'https://api.fungenerators.com/name/generate?category=dog&limit=10';
+	console.log(nameApi);
+
+
+	fetch(nameApi)
+		.then(function (response) {
+			console.log("response", response)
+			return response.json()
+		})
+
+		.then(function (data) {
+
+			for (var i =0; i<=4; i++){
+
+			var names = data.contents.names[i];
+
+			console.log(names);
+
+
+
+			$('h3').append('<p class= data-index=' + i + 'id=names src= >'+ names );
+		
+			//$('h2').append('<button class= data-index=' + i + 'id=favorite>&#9825 </button>');
+			
+			
+			//$("#favorite").css("background-color", "rgb(226, 220, 220)");
+			
+			//$("#favorite").css("visibility", "visible");
+
+			}
+		})
+
+	}
+
+
+
+
 
