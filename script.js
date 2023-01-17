@@ -252,6 +252,17 @@ function autocomplete(inp, arr) {
 
 
   //fetchlistofbreeds
+  function fetchListOfAllBreeds(){
+    let url = api+"breeds/list/all";
+	fetch(url).then((res)=>{
+		return res.json();
+	}).then((data)=>{
+      listOfAllBreed = Object.keys(data.message);
 
-  
+	   /*initiate the autocomplete function on the "breed-input" element, and pass along the listOfAllBreed array as possible autocomplete values:*/
+       autocomplete(document.getElementById("breed-input"), listOfAllBreed);
+	})
+}
+fetchListOfAllBreeds();
+
 }
