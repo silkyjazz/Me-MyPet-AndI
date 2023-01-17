@@ -98,7 +98,29 @@ search.addEventListener("click", function (event) {
 			}
 		}
 
+
 		})
 
 	})
-}
+
+};
+
+function autocomplete(inp, arr) {
+	console.log(arr)
+	/*the autocomplete function takes two arguments,
+	the text field element and an array of possible autocompleted values:*/
+	var currentFocus;
+	/*execute a function when someone writes in the text field:*/
+	inp.addEventListener("input", function(e) {
+		var a, b, i, val = this.value;
+		/*close any already open lists of autocompleted values*/
+		closeAllLists();
+		if (!val) { return false;}
+		currentFocus = -1;
+		/*create a DIV element that will contain the items (values):*/
+		var a = document.createElement("DIV");
+		a.setAttribute("id", this.id + "autocomplete-list");
+		a.setAttribute("class", "autocomplete-items ");
+		/*append the DIV element as a child of the autocomplete container:*/
+		this.parentNode.appendChild(a);
+
