@@ -23,25 +23,20 @@ function showFavoriteDogs() {
 $('#contains-favorites').on("click", function (event) {
 	event.preventDefault();
 
-	console.log("hello")
-
 	var element = event.target;
 	var imageUrl = element.src;
 
 	console.log(element);
 	console.log(imageUrl);
-	console.log("I was clicked");
 
 	var savedDogs = JSON.parse(localStorage.getItem('favDogs')) || []
 	
 	if (savedDogs.includes(imageUrl)) {
 
-	
 	var index=savedDogs.indexOf(imageUrl);
 	console.log(index);
 	savedDogs.splice(index, 1);
 	$('#' + element.id).attr("class", '#removeDog');
-
 
 }
 

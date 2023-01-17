@@ -25,10 +25,7 @@ If items exist, we want the dogs displayed in a table
 let listOfAllBreed = [];
 var search = document.querySelector('#search')
 
-var addFavorites = document.querySelector('#favoriteButton-1')
 
-var photoSelected = document.querySelectorAll('#showFavoriteList')
-// var breeds = "chow" // do we need this?
 
 //var api = "https://dog.ceo/api/breed/" + breeds + "/images/random";
 // var favorites = ;
@@ -36,7 +33,6 @@ var photoSelected = document.querySelectorAll('#showFavoriteList')
 
 var favorites = document.querySelector('#showFavoriteList')
 
-var clearFavorites = document.querySelector('#clearFavList')
 var welcome = document.getElementById("welcome")
 // create the name generator
 const nameGenerator_box = $(".nameGenerator-Box")[0]
@@ -52,10 +48,8 @@ search.addEventListener("click", function (event) {
 })
 
 
-
+//this function fetch dog images then displays them on the screen
 function renderDogSearch() {
-
-
 	var breeds = document.querySelector("#searchDog").value;
 	var api = "https://dog.ceo/api/breed/" + breeds + "/images";
 	console.log(api);
@@ -71,24 +65,20 @@ function renderDogSearch() {
 			for (var i = 0; i <= 4; i++) {
 
 				var dogImages = data.message;
-				const a = Math.floor(Math.random() * dogImages.length) + 1;
-
-				console.log(a);
-
-				var imageUrl = dogImages[a];
+				var a = Math.floor(Math.random() * dogImages.length) + 1; //grabs a random numbers 
+				var imageUrl = dogImages[a]; //the random number from above is then aused here to get a random image
 
 				$('images').append('<img class="" id= image' + i + ' src=' + imageUrl + '></img>');
 
 			}
 		}
 		)
-
 }
 
+//this function is to grab random names from fungenerators then displays them on the screen
 function renderRandomNames() {
 
 	var nameApi = 'https://api.fungenerators.com/name/generate?category=dog&limit=10';
-	console.log(nameApi);
 
 	fetch(nameApi)
 		.then(function (response) {
@@ -99,9 +89,7 @@ function renderRandomNames() {
 		.then(function (data) {
 
 			for (var i = 0; i <= 4; i++) {
-
 				var names = data.contents.names[i];
-
 				$('#contains-photo').append('<p data-index=' + i + ' id=names src= >' + names);
 
 			}
@@ -109,31 +97,29 @@ function renderRandomNames() {
 
 }
 
+//this event is to add and delete the selected dog image to the local storage and mark the image as selected.
 
 $('#contains-photo').on("click", function (event) {
 	event.preventDefault();
-
-	console.log("hello")
 
 	var element = event.target;
 	var imageUrl = element.src;
 
 	console.log(element.id);
 	console.log(imageUrl);
-	console.log("I was clicked");
 
 	var savedDogs = JSON.parse(localStorage.getItem('favDogs')) || []
-	$('#' + element.id).attr("class", 'submitted');
+	$('#' + element.id).attr("class", 'favorited');
 
 	if (!savedDogs.includes(imageUrl)) {
 
 		savedDogs.push(imageUrl);
-	}else{
+	} else {
 
 		$('#' + element.id).attr("class", '');
-	var index=savedDogs.indexOf(imageUrl);
-	console.log(index);
-	savedDogs.splice(index, 1);
+		console.log(index);
+		var index = savedDogs.indexOf(imageUrl);
+		savedDogs.splice(index, 1);
 
 	}
 	localStorage.setItem('favDogs', JSON.stringify(savedDogs));
