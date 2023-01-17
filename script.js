@@ -22,92 +22,69 @@ If items exist, we want the dogs displayed in a table
 // var breeds = dropdown.value;
 
 
-let listOfAllBreed=[];
+let listOfAllBreed = [];
 var search = document.querySelector('#search')
 
-var breeds = "chow" // this needs to be directed to the dropdown of the html
-var api = "https://dog.ceo/api/breed/" + breeds + "/images/random";
 var favorites = document.querySelectorAll('#showFavoriteList')
 // var breeds = "chow" // do we need this?
 
-var api = "https://dog.ceo/api/breed/" + breeds + "/images/random";
+//var api = "https://dog.ceo/api/breed/" + breeds + "/images/random";
 // var favorites = ;
 
- 
+
 var favorites = document.querySelector('#showFavoriteList')
 
 var clearFavorites = document.querySelector('#clearFavList')
 var welcome = document.getElementById("welcome")
 // create the name generator
 const nameGenerator_box = $(".nameGenerator-Box")[0]
-const nameGenerator = ()=>{
-	const baseUrl = `https://api.fungenerators.com`; // using the name generator api
-	const url = `${baseUrl}/name/generate?category=dog&limit=10`; // generating a list of 10 random names
-	petsName.innerHTML=""
-	fetch(url).then((res)=>{
-		return res.json();
-	}).then((data)=>{
-		console.log(data.contents.names);
-		let {names} = data.contents;
-		for(let i=0;i<names.length;i++){ 
-			const html = ` 
-			<div class='list-item'>
-				<li>
-					<b>${i+1}.</b> ${names[i]} 
-				</li>
-		    </div>`
-			petsName.insertAdjacentHTML('beforeend', html); // https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
-		}
-	})
+
 
 search.addEventListener("click", function (event) {
 	event.preventDefault();
 
-	fetch(api)
-		.then(function (response) {
-			console.log("response", response)
-			return response.json()
-		})
-		.then(function (data) {
+	renderDogSearch();
 
-<<<<<<< HEAD
-	var dogImages = data.message;
+})
 
-			var imageUrl = dogImages;
-			console.log(dogImages);
-=======
-            console.log('data', data);
->>>>>>> 2cb382c6579b9ca1f121ca0089e42e8935d03da3
 
-			$('#images').attr('src', dogImages);
-			$("#favorite").css("background-color", "rgb(226, 220, 220)");
-			$("#favorite").css("visibility", "visible");
-			$('#favorite').on("click", function (event) {
+function renderDogSearch() {
 
-				event.preventDefault();
 
-<<<<<<< HEAD
-				console.log(imageUrl);
-=======
-				var imageUrl = dogImages;
->>>>>>> 2cb382c6579b9ca1f121ca0089e42e8935d03da3
-				var savedDogs = JSON.parse(localStorage.getItem('favDogs')) || []
-				$("#favorite").css("background-color", "red");
-				
-				if (!savedDogs.includes(imageUrl)) {
+		var breeds = document.querySelector("#searchDog").value;
+		var api = "https://dog.ceo/api/breed/" + breeds + "/images/random";
+		console.log(api);
 
-					savedDogs.push(imageUrl);
-				}
-				localStorage.setItem('favDogs', JSON.stringify(savedDogs));
+	for (var i = 0; i < 5; i++) {
 
+
+		fetch(api)
+			.then(function (response) {
+				console.log("response", response)
+				return response.json()
 			})
-		})
 
-	})
-<<<<<<< HEAD
-=======
+			.then(function (data) {
+
+				var dogImages = data.message;
+console.log(dogImages);
+				var imageUrl = dogImages;
+				console.log(imageUrl);
+
+
+				$('h2').append('<img class= data-index=' + i + 'id=favorites src=' + imageUrl + '></img>');
+			
+				$('h2').append('<button class= data-index=' + i + 'id=favorite>&#9825 </button>');
+				
+				
+				$("#favorite").css("background-color", "rgb(226, 220, 220)");
+				
+				$("#favorite").css("visibility", "visible");
+			}
+
+			)
+	}
+
 
 }
 
-
->>>>>>> 2cb382c6579b9ca1f121ca0089e42e8935d03da3

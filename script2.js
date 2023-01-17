@@ -29,5 +29,4 @@ clearFavorites.addEventListener("click", function (event) {
 	localStorage.clear();
 	document.location.reload(true);
 
-
 })
