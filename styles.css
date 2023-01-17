@@ -1,33 +1,201 @@
-
-.field{
+.field {
     margin-bottom: 0px;
 }
-.box{
+
+.box {
     margin: 100px;
 }
 
-.welcome{
+.welcome {
     margin-bottom: 60px;
     /* margin: 50px;
     margin-top: 60px; */
 }
 
-
-/* .footer{
-    position: sticky;
-    top: 100%;
-} */
-#displayDogs{
+#displayDogs {
     background-color: darkgrey;
     margin-top: 40px;
 }
+
 #favorite {
-   visibility:hidden;
-   background-color:rgb(226, 220, 220);
-   visibility:hidden
+    visibility: hidden;
+    background-color: rgb(226, 220, 220);
+    visibility: hidden
 }
 
 #howFavoriteList {
-    visibility:visible
+    visibility: visible
 }
 
+
+body {
+    background-color: #E0E0CE;
+}
+
+#search {
+    background-color: #124E78;
+    color: white;
+}
+
+.autocomplete {
+    position: relative;
+    display: inline-block;
+}
+
+input {
+    border: 1px solid transparent;
+    background-color: #f1f1f1;
+    padding: 10px;
+    font-size: 16px;
+}
+
+input[type=text] {
+    background-color: #f1f1f1;
+    width: 100%;
+}
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4 !important;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    max-height: 200px;
+    overflow-y: scroll;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+.autocomplete-items:first-child {
+    border-radius: 2px 0 0 2px;
+}
+
+.autocomplete-items::-webkit-scrollbar {
+    display: none;
+}
+
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4 !important;
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+    background-color: #e9e9e9 !important;
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+    background-color: DodgerBlue !important;
+    color: ffffff !important;
+}
+
+.is-256x256 {
+    min-width: 256px !important;
+    min-height: 256px !important;
+    max-width: 256px !important;
+    max-height: 256px !important;
+}
+
+.cards-container {
+    align-items: center;
+    justify-content: center;
+}
+
+.card-image {
+    margin-bottom: 5px;
+    margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+.favorite {
+    /* margin-left: 10px; */
+    font-size: 1.2rem;
+    font-weight: bolder;
+    border-radius: 0 !important;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    opacity: 0.5;
+}
+
+.liked {
+    background-color: red;
+    opacity: 1;
+}
+
+.button.is-normal.favorite {
+    border-radius: 50% !important;
+}
+
+.breed-list {
+    height: 100vh !important;
+    overflow-y: scroll;
+}
+
+.breed-list::-webkit-scrollbar {
+    display: none;
+}
+
+.breed-heading {
+    text-align: center;
+    font-size: 2rem;
+    text-transform: capitalize;
+    padding: 10px;
+    color: black;
+
+}
+
+.section.cards.hero.is-link {
+    padding: 0;
+}
+
+div.columns {
+    margin-top: 80px;
+}
+
+h1 {
+    width: 100%;
+    /* color: green !important */
+}
+
+div.columns {
+    margin-top: 20px;
+}
+
+.list-item {
+    padding: 5px;
+    color: black !important;
+    border-bottom: 1px solid black;
+}
+
+.list {
+    border: 2px solid black;
+}
+
+.nameGenerator-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.nameGenerator-button {
+    background-color: #124E78;
+    color: #fff;
+}
+
+img {
+    object-fit: cover;
+}

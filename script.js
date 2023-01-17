@@ -190,5 +190,71 @@ const nameGenerator = () => {
 				}
 			  }
 		}
+    
+        var dogImages = data.message;
+
+		// 	$('#images').attr('src', dogImages);
+		// 	$("#favorite").css("visibility", "visible");
+
+
+        let imageUrl;
+		$(".favorite").on("click", function (event) {
+		  event.preventDefault();
+		  let classListSize = this.classList.length;
+		  let imageNumber
+
+		  if(this.classList[classListSize-1]!="liked")
+		  {imageNumber= this.classList[classListSize-1].split('-')[1];
+		   this.classList.add("liked");}
+		  else{
+             imageNumber = this.classList[classListSize-2].split('-')[1];
+		  }
+          
+		  imageUrl=$(`#img-${imageNumber}`)[0].currentSrc;
+		  let savedDogs = JSON.parse(localStorage.getItem("favDogs")) || [];
+		  // if image is not already saved in local storage then save it or remove it if it is saved.
+		  if (savedDogs.findIndex(obj=>obj.imageUrl===imageUrl)==-1) {
+			console.log(imageUrl);
+		    savedDogs.push({imageUrl, breeds});
+		  }
+		  else{
+			let indxOfImg = savedDogs.findIndex(obj=>obj.imageUrl===imageUrl);
+			if(indxOfImg>-1){
+				savedDogs.splice(indxOfImg, 1);
+			}
+			this.classList.remove("liked");
+		  }
+		  localStorage.setItem("favDogs", JSON.stringify(savedDogs))
+		  console.log(savedDogs);
+		});
+
+		})
+
+	})
+
+};
+
+function autocomplete(inp, arr) {
+	console.log(arr)
+	/*the autocomplete function takes two arguments,
+	the text field element and an array of possible autocompleted values:*/
+	var currentFocus;
+	/*execute a function when someone writes in the text field:*/
+	inp.addEventListener("input", function(e) {
+		var a, b, i, val = this.value;
+		/*close any already open lists of autocompleted values*/
+		closeAllLists();
+		if (!val) { return false;}
+		currentFocus = -1;
+		/*create a DIV element that will contain the items (values):*/
+		var a = document.createElement("DIV");
+		a.setAttribute("id", this.id + "autocomplete-list");
+		a.setAttribute("class", "autocomplete-items ");
+		/*append the DIV element as a child of the autocomplete container:*/
+		this.parentNode.appendChild(a);
+    })
+}
+
 	})
 }
+
