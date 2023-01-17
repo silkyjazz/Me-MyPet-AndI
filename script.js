@@ -94,4 +94,12 @@ search.addEventListener("click", function (event) {
 	            $(`.button-${i}`)[0].classList.add("liked")
 			}
 		}
-	}
+	};
+
+function autocomplete(inp, arr) {
+	console.log(arr)
+	/*the autocomplete function takes two arguments,
+	the text field element and an array of possible autocompleted values:*/
+	var currentFocus;
+	/*execute a function when someone writes in the text field:*/
+	inp.addEventListener("input", function(e) {
