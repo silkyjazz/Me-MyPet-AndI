@@ -44,6 +44,12 @@ const nameGenerator = ()=>{
 			petsName.insertAdjacentHTML('beforeend', html); 
 		}
 	})
+
+// create the name generator button with click event
+const nameGeneratorButton = $(".nameGenerator-button")[0];
+nameGeneratorButton.addEventListener('click', (e)=>{
+	nameGenerator()
+})
 	
 
 search.addEventListener("click", function (event) {
