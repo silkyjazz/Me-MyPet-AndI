@@ -21,6 +21,13 @@ let listOfAllBreed=[];
 let api = "https://dog.ceo/api/"
 var search = document.querySelector('#search')
 // var api = "https://dog.ceo/api/breed/" + breeds + "/images/random";
+let cards = $(".cards")[0];
+let petsName= $(".pets-name")[0];
+let  cards_container = $(".cards-container")[0];
+const nameGenerator_box = $(".nameGenerator-Box")[0]
+const nameGenerator = ()=>{
+	const baseUrl = `https://api.fungenerators.com`; // using the name generator api
+	const url = `${baseUrl}/name/generate?category=dog&limit=10`; // generating a list of 10 random names
 
 search.addEventListener("click", function (event) {
 	event.preventDefault();
