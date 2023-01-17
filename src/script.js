@@ -74,7 +74,7 @@ search.addEventListener("click", function (event) {
     .then(function (data) {
       var breedImgData = data.message;
       cards_container.innerHTML = "";
-      let savedDogs = JSON.parse(localStorage.getItem("favDogs")) || [];
+      let savedDogs = JSON.parse(localStorage.getItem("favoriteDogs")) || [];
 
       for (let i = 0; i < breedImgData.length; i++) {
         const testhtml =
@@ -120,7 +120,7 @@ search.addEventListener("click", function (event) {
         }
 
         imageUrl = $(`#img-${imageNumber}`)[0].currentSrc;
-        let savedDogs = JSON.parse(localStorage.getItem("favDogs")) || [];
+        let savedDogs = JSON.parse(localStorage.getItem("favoriteDogs")) || [];
         // if image is not already saved in local storage then save it or remove it if it is saved.
         if (savedDogs.findIndex((obj) => obj.imageUrl === imageUrl) == -1) {
           console.log(imageUrl);
@@ -134,7 +134,7 @@ search.addEventListener("click", function (event) {
           }
           this.classList.remove("liked");
         }
-        localStorage.setItem("favDogs", JSON.stringify(savedDogs));
+        localStorage.setItem("favoriteDogs", JSON.stringify(savedDogs));
         console.log(savedDogs);
       });
     });
@@ -249,7 +249,7 @@ function autocomplete(inp, arr) {
   document.addEventListener("click", function (e) {
     closeAllLists(e.target);
   });
-
+}
 
   //fetchlistofbreeds
   function fetchListOfAllBreeds(){
@@ -262,7 +262,8 @@ function autocomplete(inp, arr) {
 	   /*initiate the autocomplete function on the "breed-input" element, and pass along the listOfAllBreed array as possible autocomplete values:*/
        autocomplete(document.getElementById("breed-input"), listOfAllBreed);
 	})
+   
 }
+
 fetchListOfAllBreeds();
 
-}
