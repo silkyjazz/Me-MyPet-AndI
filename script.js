@@ -29,4 +29,18 @@ search.addEventListener("click", function (event) {
 	if($(".breed-heading")[0])
 	$(".breed-heading")[0].remove();
 
+	// add heading 
+	let html = `<h1 class="breed-heading">${breeds}</h1>`
+	cards.insertAdjacentHTML("afterbegin", html); 
+
+	let url = "https://dog.ceo/api/breed/" + breeds + "/images";
+	fetch(url)
+		.then(function (response) {
+			return response.json()
+		})	
+		.then(function (data) {
+		const breedImgData = data.message;
+		cards_container.innerHTML="";
+		let savedDogs = JSON.parse(localStorage.getItem("favDogs")) || [];
+
 })
