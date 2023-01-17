@@ -27,8 +27,8 @@
    visibility:hidden
 }
 
-#howFavoriteList {
-    visibility:visible
+#removeDog {
+    visibility:hidden
 }
 
 .submitted {

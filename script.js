@@ -78,9 +78,7 @@ function renderDogSearch() {
 				var imageUrl = dogImages[a];
 
 				$('images').append('<img class="" id= image' + i + ' src=' + imageUrl + '></img>');
-				$('#contains-photo').append('<button date-index=' + i + '>&#9825</button>');
-				$("#favorite").css("background-color", "rgb(226, 220, 220)");
-				//$("#favorite").css("visibility", "visible");
+
 			}
 		}
 		)
@@ -133,9 +131,10 @@ $('#contains-photo').on("click", function (event) {
 	}else{
 
 		$('#' + element.id).attr("class", '');
-		
+	var index=savedDogs.indexOf(imageUrl);
+	console.log(index);
+	savedDogs.splice(index, 1);
+
 	}
-
 	localStorage.setItem('favDogs', JSON.stringify(savedDogs));
-
 })
