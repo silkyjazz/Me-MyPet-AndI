@@ -41,7 +41,7 @@ if (savedDogs.length > 0) {
     localStorage.setItem("favoriteDogs", JSON.stringify(savedDogs));
     // e.parentNode.parentNode.parentNode.removeChild(e.parentNode.parentNode);
 
-    console.log();
+    
     if (e.target.parentNode.classList.contains("card-image")) {
       console.log(e.target.parentNode);
       e.target.parentNode.parentNode.removeChild(e.target.parentNode);
