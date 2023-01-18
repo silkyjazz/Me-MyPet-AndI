@@ -23,11 +23,12 @@ var search = document.querySelector("#search");
 let cards = $(".cards")[0];
 let petsName = $(".pets-name")[0];
 let cards_container = $(".cards-container")[0];
-const nameGenerator_box = $(".nameGenerator-Box")[0];
 
-const nameGenerator = () => {
-  const baseUrl = `https://api.fungenerators.com`; // using the name generator api
-  const url = `${baseUrl}/name/generate?category=dog&limit=10`; // generating a list of 10 random names
+var nameGenerator_box = $(".nameGenerator-Box")[0];
+
+var nameGenerator = () => {
+  var baseUrl = `https://api.fungenerators.com`; // using the name generator api
+  var url = `${baseUrl}/name/generate?category=dog&limit=10`; // generating a list of 10 random names
   petsName.innerHTML = "";
   fetch(url)
     .then((res) => {
@@ -39,7 +40,7 @@ const nameGenerator = () => {
       let { names } = data.contents;
       for (let i = 0; i < names.length; i++) {
         //for loop to retrieve the random names
-        const html = ` 
+        var html = ` 
 			<div class='list-item'>
 				<li>
 					<b>${i + 1}.</b> ${names[i]} 
@@ -51,7 +52,7 @@ const nameGenerator = () => {
 };
 
 // create the name generator button with click event
-const nameGeneratorButton = $(".nameGenerator-button")[0];
+var nameGeneratorButton = $(".nameGenerator-button")[0];
 nameGeneratorButton.addEventListener("click", (e) => {
   nameGenerator();
 });
@@ -88,7 +89,7 @@ search.addEventListener("click", function (event) {
 					<nav class="level box">
 						<div class="level-left">
 			 				 <div class="level-item">
-								<p><strong>Breed:</strong>${breeds}</p>
+								<p><strong>Breed: </strong>${breeds}</p>
 							 </div>
 						</div> 
 					</nav>

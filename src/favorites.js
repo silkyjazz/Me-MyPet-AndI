@@ -52,7 +52,7 @@ if (savedDogs.length > 0) {
       );
     }
     if (savedDogs.length === 0) {
-      cards.innerHTML = `<h1>No pets in favourite list</h1>`;
+      cards.innerHTML = `<h1>No pets in favorite list</h1>`;
     }
     console.log(savedDogs);
   });
