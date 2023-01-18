@@ -26,14 +26,16 @@
 #howFavoriteList {
     visibility: visible
 }
-
+a{
+    color: black;
+}
 
 body {
-    background-color: #E0E0CE;
+    background-color: #fff;
 }
 
 #search {
-    background-color: #124E78;
+    background-color: #F4A905;
     color: white;
 }
 
@@ -192,7 +194,7 @@ div.columns {
 }
 
 .nameGenerator-button {
-    background-color: #124E78;
+    background-color: #F4A905;
     color: #fff;
 }
 
