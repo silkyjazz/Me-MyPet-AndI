@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <!--Using Bulma as our CSS framework. Imported the CSS file directly from jsDelivr -->
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="/src/styles.css">
 
     <title>Me, My Pet, & I</title>
 </head>
@@ -30,7 +30,7 @@
             <a href="/index.html" class="link is-info">Home</a>
           </p>
           <p class="level-item has-text-centered">
-            <img src="./assets/logo.png" alt="" style="height: 140px;">
+            <img src="/assets/logo.png" alt="" style="height: 140px;">
           </p>
           <p class="level-item has-text-centered">
             <a href="./favorites.html" class="link is-info">Favorite Pets</a>
@@ -38,10 +38,9 @@
     </nav>
 </header>
 
-
+<!-- This section is where we will have the input field and search button -->
 <section class="hero is-small-with-navbar">
     <div class="hero-body level">
-
       <div class="level-item">
         <div class="field has-addons">
           <p class="control">
@@ -57,6 +56,7 @@
     </div>
 </section>
 
+<!-- Here we are appending the dog images to the breed-list container -->
   <section class="section cards hero">
     <div class="container hero-body breed-list">
       <div class="cards-container columns is-multiline">
@@ -64,15 +64,14 @@
     </div>
   </section>
   
-<!-- <section class="section" id="nameGenerator"> -->
 
 
-<!-- Random Name generator-->
+
+<!-- This container will hold the Random Name Generator button and table-->
 <section class="section" id="nameGenerator">
     <div class='container nameGenerator-Box'>
       <div class="nameGenerator-container">
-        <button class="button is-large nameGenerator-button ">Name Generator</button>
-
+        <button class="button is-large nameGenerator-button">Name Generator</button>
       </div>
       <div>
         <h1 class='title has-text-centered'>
@@ -96,7 +95,7 @@
 <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"></script>
 <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
 <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-<script src="./script.js"></script>
+<script src="./src/script.js"></script>
 
 </body>
 
