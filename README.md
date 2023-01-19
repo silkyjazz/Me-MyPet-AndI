@@ -11,7 +11,7 @@ On this site we are using Bulma.io as our CSS Framework.
 ---
 - [Installation](#installation)
 - [Usage](#usage)
-- [Code Snippets] (#code snippets)
+- [Code Snippets] (#usage)
 - [Credits](#credits)
 - [License](#license)
 
