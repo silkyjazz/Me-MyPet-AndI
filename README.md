@@ -17,37 +17,31 @@ On this site we are using Bulma.io as our CSS Framework.
 ---
 ## Installation
 
-[View the live site on Github](https://silkyjazz.github.io/Me-MyPet-AndI/)
+[View the live site](https://silkyjazz.github.io/Me-MyPet-AndI/)
 
 ---
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+To complete the project we followed our user story.
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
+As a user...
+I want like to..
+So that...
 
-![Navigation](assets/images/image1.png)
-The user can use the navigation bar to get to and from their favorites list.
+1. As a user looking to adopt a rescue dog. I want to click a button and receive images of avaiable dogs in the shelter. So that I can find a new pet.
+2. As a user browsing through dog images. I want to save my favorite dog to a list. So that I can reference the dog at another time.
+3. As a user looking to adopt. I want to navigate to the favorites page and see all of my favorited dogs. So that I can add or remove dogs I do not wish to adopt.
 
-![Search Bar and Button](assets/images/image2.png)
-Once the user beings to type out the dog breed, we are using jQuery to autocomplete the input field and listening for a keyDown and keyUp keypress event to allow the user to select a dog breed with the arrow keys.
+4. As a user looking to adopt a dog. I want to be able to generate a list of names. So that I can name my future dog.
 
-![Fetching Dog Images](assets/images/image3.png)
-On page load we are fetching a list of dog breeds from the Dog CEO Api. From there, we are saving the users input as a variable named 'breeds' and using the variable as a parameter in the next API call that is going to retrieve for us a list of dog images that we are appending to the page and displaying in cards.
-
-![Saving to Favorites](assets/images/image4.png)
-The user will have the option to add or remove favorites from both the home page and their favorite's page. We are saving the dog image url to local storage.
-
-![Generate a Random Name](assets/images/image5.png)
-FunGenerators API will retrieve for us a list of 10 random names.
 
 ## Credits
 
 [Team Contributors]
-1. [DarrenWatanabe](https://github.com/Darrenkwatanabe)
-2. [JasmineUlloa](https://github.com/Silkyjazz)
-3. [RoksolanaOdynak](https://github.com/poucoLouco)
-4. [EmilRonquillo](https://github.com/Emil1577)
+- [DarrenWatanabe](https://github.com/Darrenkwatanabe)
+- [JasmineUlloa](https://github.com/Silkyjazz)
+- [RoksolanaOdynak](https://github.com/poucoLouco)
+- [EmilRonquillo](https://github.com/Emil1577)
 
 
 [Template Literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
