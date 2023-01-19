@@ -11,6 +11,7 @@ On this site we are using Bulma.io as our CSS Framework.
 ---
 - [Installation](#installation)
 - [Usage](#usage)
+- [Code Snippets] (#code snippets)
 - [Credits](#credits)
 - [License](#license)
 
@@ -25,7 +26,7 @@ On this site we are using Bulma.io as our CSS Framework.
 To complete the project we followed our user story.
 
 As a user...
-I want like to..
+I want to..
 So that...
 
 1. As a user looking to adopt a rescue dog. I want to click a button and receive images of avaiable dogs in the shelter. So that I can find a new pet.
@@ -33,6 +34,87 @@ So that...
 3. As a user looking to adopt. I want to navigate to the favorites page and see all of my favorited dogs. So that I can add or remove dogs I do not wish to adopt.
 
 4. As a user looking to adopt a dog. I want to be able to generate a list of names. So that I can name my future dog.
+
+## Code Snippets
+
+### Function to fetch information from Dog.Api
+
+    var html = `<h1 class="breed-heading">${breeds}</h1>`;
+    cards.insertAdjacentHTML("afterbegin", html);
+
+    var url = "https://dog.ceo/api/breed/" + breeds + "/images";
+    fetch(url)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        var breedImgData = data.message;
+        cards_container.innerHTML = "";
+        let savedDogs = JSON.parse(localStorage.getItem("favoriteDogs")) || [];
+
+        for (let i = 0; i < breedImgData.length; i++) {
+          const testhtml =
+            cards_container.innerHTML +
+            
+### Function to fetch information from FunGenerators
+
+    const nameGenerator = () => {
+      const baseUrl = `https://api.fungenerators.com`; // using the name generator api
+      const url = `${baseUrl}/name/generate?category=dog&limit=10`; // generating a list of 10 random names
+      petsName.innerHTML = "";
+      fetch(url)
+        .then((res) => {
+          // https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML
+          return res.json();
+        })
+        .then((data) => {
+          console.log(data.contents.names);
+          let { names } = data.contents;
+          for (let i = 0; i < names.length; i++) {
+            //for loop to retrieve the random names
+            const html = ` 
+          <div class='list-item'>
+            <li>
+              <b>${i + 1}.</b> ${names[i]} 
+            </li>
+            </div>`;
+            petsName.insertAdjacentHTML("beforeend", html);
+          }
+
+### Storing Favorite Dogs
+
+      let imageUrl;
+      $(".favorite").on("click", function (event) {
+        event.preventDefault();
+        let classListSize = this.classList.length;
+        let imageNumber;
+
+        if (this.classList[classListSize - 1] != "liked") {
+          imageNumber = this.classList[classListSize - 1].split("-")[1];
+          this.classList.add("liked");
+        } else {
+          imageNumber = this.classList[classListSize - 2].split("-")[1];
+        }
+
+        imageUrl = $(`#img-${imageNumber}`)[0].currentSrc;
+        let savedDogs = JSON.parse(localStorage.getItem("favoriteDogs")) || [];
+        // if image is not already saved in local storage then save it or remove it if it is saved.
+        if (savedDogs.findIndex((obj) => obj.imageUrl === imageUrl) == -1) {
+          console.log(imageUrl);
+          savedDogs.push({ imageUrl, breeds });
+        } else {
+          let indxOfImg = savedDogs.findIndex(
+            (obj) => obj.imageUrl === imageUrl
+          );
+          if (indxOfImg > -1) {
+            savedDogs.splice(indxOfImg, 1);
+          }
+          this.classList.remove("liked");
+        }
+        localStorage.setItem("favoriteDogs", JSON.stringify(savedDogs));
+        console.log(savedDogs);
+      });
+
 
 
 ## Credits
