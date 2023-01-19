@@ -25,28 +25,28 @@ Provide instructions and examples for use. Include screenshots as needed.
 
 To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README using the following syntax:
 
-![Navigation](assets/image1.png)
+![Navigation](./assets/image1.png)
 The user can use the navigation bar to get to and from their favorites list.
 
-![Search Bar and Button](assets/image2.png)
+![Search Bar and Button](./assets/image2.png)
 Once the user beings to type out the dog breed, we are using jQuery to autocomplete the input field and listening for a keyDown and keyUp keypress event to allow the user to select a dog breed with the arrow keys.
 
-![Fetching Dog Images](assets/image3.png)
+![Fetching Dog Images](./assets/image3.png)
 On page load we are fetching a list of dog breeds from the Dog CEO Api. From there, we are saving the users input as a variable named 'breeds' and using the variable as a parameter in the next API call that is going to retrieve for us a list of dog images that we are appending to the page and displaying in cards.
 
-![Saving to Favorites](assets/image4.png)
+![Saving to Favorites](./assets/image4.png)
 The user will have the option to add or remove favorites from both the home page and their favorite's page. We are saving the dog image url to local storage.
 
-![Generate a Random Name](assets/image5.png)
+![Generate a Random Name](./assets/image5.png)
 FunGenerators API will retrieve for us a list of 10 random names.
 
 ## Credits
 
 [Team Contributors]
-1. [!DarrenWatanabe](https://github.com/Darrenkwatanabe)
-2. [!JasmineUlloa](https://github.com/Silkyjazz)
-3. [!RoksolanaOdynak](https://github.com/poucoLouco)
-4. [!EmilRonquillo](https://github.com/Emil1577)
+1. ![DarrenWatanabe](https://github.com/Darrenkwatanabe)
+2. ![JasmineUlloa](https://github.com/Silkyjazz)
+3. ![RoksolanaOdynak](https://github.com/poucoLouco)
+4. ![EmilRonquillo](https://github.com/Emil1577)
 
 
 ![Template Literals](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals)
